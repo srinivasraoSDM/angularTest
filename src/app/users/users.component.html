@@ -1,0 +1,112 @@
+<section class="antialiased bg-gray-100 text-gray-600 h-screen px-4">
+  <div class="flex flex-col justify-center h-full">
+    <!-- Table -->
+    <div
+      class="w-full max-w-4xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200"
+    >
+      <header class="px-5 py-4 border-b border-gray-100">
+        <h2 class="font-semibold text-gray-800">Customers</h2>
+      </header>
+      <div class="p-3">
+        <div
+          class="overflow-x-auto"
+          style="max-height: 450px; overflow-y: scroll"
+        >
+          <table class="table-auto w-full">
+            <thead
+              class="text-xs font-semibold uppercase text-gray-400 bg-gray-50"
+            >
+              <tr>
+                <th class="p-2 whitespace-nowrap">
+                  <div class="font-semibold text-left">Name</div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                  <div class="font-semibold text-left">Email</div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                  <div class="font-semibold text-left">Phone</div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                  <div class="font-semibold text-center">Website</div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                  <div class="font-semibold text-center">Address</div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                  <div class="font-semibold text-center">Company</div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                  <div class="font-semibold text-center">Actions</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="text-sm divide-y divide-gray-100">
+              <tr *ngFor="let user of users">
+                <td class="p-2 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
+                      <img
+                        class="rounded-full"
+                        src="https://raw.githubusercontent.com/cruip/vuejs-admin-dashboard-template/main/src/images/user-36-05.jpg"
+                        width="40"
+                        height="40"
+                        alt="Alex Shatov"
+                      />
+                    </div>
+                    <div class="font-medium text-gray-800">
+                      {{ user?.name }}
+                      <div class="font-medium text-xs text-gray-600">
+                        {{ user?.username }}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="p-2 whitespace-nowrap">
+                  <div class="text-left">{{ user?.email }}</div>
+                </td>
+                <td class="p-2 whitespace-nowrap">
+                  <div class="text-left font-medium text-green-500">
+                    🇺🇸 {{ user?.phone }}
+                  </div>
+                </td>
+                <td class="p-2 whitespace-nowrap">
+                  <div class="text-lg text-center">{{ user?.website }}</div>
+                </td>
+                <td class="p-2 whitespace-wrap">
+                  <div class="flex items-center">
+                    <div class="font-medium text-gray-800">
+                      {{ user?.address?.suite }}, {{ user?.address?.street }},
+                      {{ user?.address?.city }}, ({{ user?.address?.zipcode }})
+                    </div>
+                  </div>
+                </td>
+                <td class="p-2 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="font-medium text-gray-800">
+                      {{ user?.company?.name }}
+                      <div class="font-medium text-xs text-gray-400">
+                        {{ user?.company?.catchPhrase }}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="p-2 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <a
+                      (click)="editUser(user)"
+                      routerLink="/user/{{ user?.id }}"
+                      class="text-blue-700 inline-flex items-center font-semibold tracking-wide"
+                    >
+                      <span class="hover:underline"> Edit </span>
+                      <span class="text-xl ml-2">&#8594;</span>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
